@@ -1,8 +1,22 @@
 <div class="form-container">
   <h1>Contate nos</h1>
   <form class="formulario" [formGroup]="contactForm" (ngSubmit)="salvar()">
-    <input type="text" name="name" formControlName="nameControl" placeholder="Nome">
-    <input type="email" name="email" formControlName="emailControl" placeholder="E-mail">
+    <input type="text" name="name" formControlName="nameControl" placeholder="Nome" required>
+
+      <app-erro *ngIf="contactForm.get('nameControl')?.errors?.minlength"
+        mensagem="O nome deve ter mais de 6 caracteres.">
+      </app-erro>
+      <app-erro *ngIf="contactForm.get('nameControl')?.errors?.required &&
+                    contactForm.get('nameControl')?.touched" mensagem="O Campo nome é obrigatório!">
+      </app-erro>
+
+      <input type="email" name="email" formControlName="emailControl" placeholder="E-mail" required>
+      <app-erro *ngIf="contactForm.get('emailControl')?.errors?.email && contactForm.get('emailControl')?.touched"
+        mensagem="Esse e-mail não é válido">
+      </app-erro>
+      <app-erro *ngIf="contactForm.get('emailControl')?.errors?.required &&
+                contactForm.get('emailControl')?.touched" mensagem="O Campo e-mail é obrigatóio!">
+      </app-erro>
     <textarea name="message" formControlName="menssagemControl" placeholder="Menssagem"></textarea>
     <button type="submit" class="btnSend">Enviar</button>
   </form>

@@ -9,12 +9,11 @@ import { Menssagem } from 'src/app/models/menssagem';
   styleUrls: ['./contact.component.css'],
 })
 export class ContactComponent implements OnInit {
-
   contactForm: FormGroup;
 
   createFormGroup() {
     return new FormGroup({
-      emailControl: new FormControl('',[Validators.email]),
+      emailControl: new FormControl('', [Validators.email]),
       menssagemControl: new FormControl(''),
       nameControl: new FormControl(''),
     });
@@ -26,19 +25,20 @@ export class ContactComponent implements OnInit {
 
   ngOnInit(): void {}
 
-
-  limparFormulario(){
+  limparFormulario() {
     this.contactForm.reset();
   }
 
-  salvar(){
+  salvar() {
     const newContact = {
       name: this.contactForm.value.nameControl,
       email: this.contactForm.value.emailControl,
       message: this.contactForm.value.menssagemControl,
-    } as unknown as Menssagem
-
-    this.bancoService.saveMensagem(newContact);
-    alert('E-mail enviado com sucesso!');
+    } as unknown as Menssagem;
+    if (newContact) {
+      this.bancoService.saveMensagem(newContact);
+      alert('E-mail enviado com sucesso!');
+      this.limparFormulario();
+    }
   }
 }

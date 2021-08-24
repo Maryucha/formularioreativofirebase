@@ -9,11 +9,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { DataDbService } from './services/data-db.service';
+import { ErroComponent } from './components/erro/erro.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ContactComponent
+    ContactComponent,
+    ErroComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +24,8 @@ import { DataDbService } from './services/data-db.service';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [DataDbService],
   bootstrap: [AppComponent]
