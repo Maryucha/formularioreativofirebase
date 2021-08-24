@@ -13,9 +13,9 @@ export class ContactComponent implements OnInit {
 
   createFormGroup() {
     return new FormGroup({
-      emailControl: new FormControl('', [Validators.email]),
-      menssagemControl: new FormControl(''),
-      nameControl: new FormControl(''),
+      emailControl: new FormControl('', [Validators.email,Validators.required]),
+      menssagemControl: new FormControl('',[Validators.required,Validators.minLength(6)]),
+      nameControl: new FormControl('',[Validators.required,Validators.minLength(6)]),
     });
   }
 
