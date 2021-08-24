@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataDbService } from 'src/app/services/data-db.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Menssagem } from 'src/app/models/menssagem';
 
 @Component({
@@ -14,9 +14,9 @@ export class ContactComponent implements OnInit {
 
   createFormGroup() {
     return new FormGroup({
-      email: new FormControl(''),
-      mensagem: new FormControl(''),
-      name: new FormControl(''),
+      emailControl: new FormControl('',[Validators.email]),
+      menssagemControl: new FormControl(''),
+      nameControl: new FormControl(''),
     });
   }
 
@@ -33,9 +33,9 @@ export class ContactComponent implements OnInit {
 
   salvar(){
     const newContact = {
-      name: 'uxa',
-      email: 'uxa@gmail.com',
-      message: 'oi sua linda'
+      name: this.contactForm.value.nameControl,
+      email: this.contactForm.value.emailControl,
+      message: this.contactForm.value.menssagemControl,
     } as unknown as Menssagem
 
     this.bancoService.saveMensagem(newContact);
