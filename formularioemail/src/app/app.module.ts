@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { DataDbService } from './services/data-db.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { ContactComponent } from './components/contact/contact.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [DataDbService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

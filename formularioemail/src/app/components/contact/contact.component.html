@@ -1,1 +1,9 @@
-<p>contact works!</p>
+<div class="form-container">
+  <h1>Contate nos</h1>
+  <form class="formulario" [formGroup]="contactForm" (ngSubmit)="salvar()">
+    <input type="text" formControlName="nameControl" placeholder="Nome">
+    <input type="email" formControlName="emailControl" placeholder="E-mail">
+    <textarea formControlName="menssagemControl" placeholder="Menssagem"></textarea>
+    <button type="submit" class="btnSend">Enviar</button>
+  </form>
+</div>
